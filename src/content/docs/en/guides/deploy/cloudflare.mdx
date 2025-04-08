@@ -32,17 +32,22 @@ To get started, you will need:
 <Steps>
 1. Install [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/get-started/).
     ```bash
-      npm install wrangler@latest --save-dev
+    npm install wrangler@latest --save-dev
     ```
 
 2. If your site uses on demand rendering, install the `@astrojs/cloudflare` adapter.
 
     This will install the adapter and make the appropriate changes to your `astro.config.mjs` file in one step.
       ```bash
-        npx astro add cloudflare
+      npx astro add cloudflare
       ```
     <ReadMore>Read more about [on demand rendering (also known as SSR) in Astro](/en/guides/on-demand-rendering/).</ReadMore>
-
+  
+    You should then create a `.assetsignore` file in your `public/` folder, and add the following lines to it:
+    ```title=".assetsignore"
+    _worker.js
+    _routes.json
+    ```
 2. Create a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
 
     <StaticSsrTabs>
@@ -85,12 +90,12 @@ To get started, you will need:
 
 3. Preview your project locally with Wrangler.
     ```bash
-      npx astro build && npx wrangler dev
+    npx astro build && npx wrangler dev
     ```
 
 4. Deploy using `npx wrangler deploy`.
     ```bash
-      npx astro build && npx wrangler deploy
+    npx astro build && npx wrangler deploy
     ```
 </Steps>
 
@@ -122,24 +127,24 @@ If you're using Workers Builds:
 <Steps>
 1. Install [Wrangler CLI].(https://developers.cloudflare.com/workers/wrangler/get-started/).
     ```bash
-      npm install wrangler@latest --save-dev
+    npm install wrangler@latest --save-dev
     ```
 
 2. If your site uses on demand rendering, install the `@astrojs/cloudflare` adapter. 
     This will install the adapter and make the appropriate changes to your `astro.config.mjs` file in one step.
       ```bash
-        npx astro add cloudflare
+      npx astro add cloudflare
       ```
     <ReadMore>Read more about [on demand rendering in Astro](/en/guides/on-demand-rendering/).</ReadMore>
 
 3. Preview your project locally with Wrangler.
     ```bash
-      npx astro build && npx wrangler pages dev ./dist
+    npx astro build && npx wrangler pages dev ./dist
     ```
 
 4. Deploy using `npx wrangler deploy`.
     ```bash
-      npx astro build && npx wrangler pages deploy ./dist
+    npx astro build && npx wrangler pages deploy ./dist
     ```
 </Steps>
 

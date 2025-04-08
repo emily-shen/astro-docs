@@ -346,7 +346,11 @@ This is available on Cloudflare Workers and Pages.
 
 Routing for static assets is based on the file structure in the build directory (e.g. `./dist`). If no match is found, this will fall back to the Worker for SSR. Read more about [static asset routing with Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/routing/).
 
-Unlike [Cloudflare Pages](#routing-on-cloudflare-pages), with Workers, you do not need a `_routes.json` file. 
+Unlike [Cloudflare Pages](#routing-on-cloudflare-pages), with Workers, you do not need a `_routes.json` file. Currently, the Cloudflare adapter always generates this file. To work around this, you should create a `.assetsignore` file in your `public/` folder, and add the following lines to it:
+  ```title=".assetsignore"
+  _worker.js
+  _routes.json
+  ```
 
 #### Routing on Cloudflare Pages
 
